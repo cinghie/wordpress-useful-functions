@@ -15,4 +15,14 @@
  
 add_filter( 'breadcrumb_trail', '__return_false' );
 
+/**
+ * Remove Woocommerce Breadcrumbs from the Original Theme
+ */
+
+function remove_woocommerce_breadcrumbcrumbs(){
+   remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+}
+add_action('init','remove_woocommerce_breadcrumbcrumbs');
+
+
 ?>
