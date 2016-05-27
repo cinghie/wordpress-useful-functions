@@ -31,7 +31,7 @@ function add_js_on_custom_post_type_backend()
 
     if($post_type['MYPOSTYPE'] == "MYPOSTYPE")
     {
-        wp_enqueue_script( 'script_search_key_siti', plugin_dir_url( __FILE__ ) . 'wp-gogo-customization/js/MYCUSTOMJS.js' );
+        wp_enqueue_script( 'script_search_key_siti', plugin_dir_url( __FILE__ ) . 'js/MYCUSTOMJS.js' );
     }
 }
 add_action( 'admin_enqueue_scripts', 'add_js_on_custom_post_type_backend' );
