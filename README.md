@@ -5,7 +5,8 @@ Adding customization plugin to wordpress site: you need customize the file by yo
 
 ## Changelog
 
-1.0.3 - Add custom js on a Custom Post Type in backend  
+1.0.4 - Adding Remove "Category:" from Archive Title
+1.0.3 - Adddig custom js on a Custom Post Type in backend  
 1.0.2 - Update informations   
 1.0.1 - Update informations    
 1.0.0 - Initial Release
