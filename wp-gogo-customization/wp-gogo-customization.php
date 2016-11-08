@@ -50,4 +50,12 @@ add_filter( 'get_the_archive_title', function ($title) {
 	return $title;
 });
 
+/**
+ * Filter the except length to 100 characters.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+	return 100;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
 ?>
