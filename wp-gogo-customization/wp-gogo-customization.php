@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cinghie/wordpress-gogo-customization
  * Description: Customize your Wordpress site
  * Author: Gogodigital S.r.l.s.
- * Version: 1.0.3
+ * Version: 1.0.5
  * Author URI: http://www.gogodigital.it
  */
 
@@ -54,7 +54,11 @@ add_filter( 'get_the_archive_title', function ($title) {
  * Filter the except length to 100 characters.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-	return 100;
+	if(is_home() || is_front_page()) {
+		return 25;
+	} else {
+		return 100;
+	}
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
