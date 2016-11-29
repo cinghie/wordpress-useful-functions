@@ -65,7 +65,6 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 /**
  * Get the first image in post_content.
  */
-
 function catch_that_image() {
     global $post, $posts;
     $first_img = '';
@@ -80,5 +79,19 @@ function catch_that_image() {
 	
     return $first_img;
 }
+
+/**
+ * Ensure that a specific theme is never updated. This works by removing the
+ * theme from the list of available updates.
+ */
+add_filter( 'http_request_args', function ( $response, $url ) {
+	if ( 0 === strpos( $url, 'https://api.wordpress.org/themes/update-check' ) ) {
+		$themes = json_decode( $response['body']['themes'] );
+		unset( $themes->themes->{get_option( 'template' )} );
+		unset( $themes->themes->{get_option( 'stylesheet' )} );
+		$response['body']['themes'] = json_encode( $themes );
+	}
+	return $response;
+}, 10, 2 );
 
 ?>
