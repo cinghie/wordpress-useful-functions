@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Plugin Name: Gogodigital Customization
+ * Plugin Name: WP Gogo Customization
  * Plugin URI: https://github.com/cinghie/wordpress-gogo-customization
  * Description: Customize your Wordpress site
  * Author: Gogodigital S.r.l.s.
