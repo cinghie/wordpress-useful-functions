@@ -4,6 +4,14 @@ Wordpress Gogodital Customization
 Adding customization plugin to wordpress site: you have to customize the file by your self.
 In this plugin you can find some simple and useful function.
 
+## Copy folder with git from Terminal
+
+Go to folder wp-content/plugins/
+
+```
+git clone https://github.com/cinghie/wordpress-gogo-example.git gogodigital-example
+```
+
 ## Changelog
 
 1.0.9 - Prevent update notification for plugin  
