@@ -9,7 +9,7 @@ In this plugin you can find some simple and useful function.
 Go to folder wp-content/plugins/
 
 ```
-git clone https://github.com/cinghie/wordpress-gogo-example.git gogodigital-example
+git clone https://github.com/cinghie/wordpress-gogo-example.git wordpress-gogo-customization
 ```
 
 ## Changelog
