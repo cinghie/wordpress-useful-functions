@@ -1,7 +1,8 @@
 Wordpress Gogodital Customization
 ==============================
 
-Adding customization plugin to wordpress site: you have to customize the file by your self
+Adding customization plugin to wordpress site: you have to customize the file by your self.
+In this plugin you can find some simple and useful function.
 
 ## Changelog
 
