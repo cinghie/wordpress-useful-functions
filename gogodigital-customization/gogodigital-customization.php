@@ -6,7 +6,7 @@
  * Description: Simple Customization plugin for a Wordpress site
  * Author: Gogodigital S.r.l.s.
  * Author URI: http://www.gogodigital.it
- * Version: 1.0.7
+ * Version: 1.0.9
  */
 
 /**
@@ -114,5 +114,23 @@ function front_end_login_fail( $username ) {
     }
 }
 add_action( 'wp_login_failed', 'front_end_login_fail' );
+
+/**
+ * Prevent update notification for plugin
+ * http://www.thecreativedev.com/disable-updates-for-specific-plugin-in-wordpress/
+ * Place in theme functions.php or at bottom of wp-config.php
+ */
+function disable_plugin_updates( $value ) 
+{
+    if ( isset($value) && is_object($value) ) {
+        if ( isset( $value->response['plugin-folder/plugin.php'] ) ) {
+            unset( $value->response['plugin-folder/plugin.php'] );
+       }
+    }
+	
+    return $value;
+}
+
+add_filter( 'site_transient_update_plugins', 'disable_plugin_updates' );
 
 ?>
