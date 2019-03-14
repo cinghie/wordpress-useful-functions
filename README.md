@@ -5,7 +5,8 @@ Adding customization plugin to wordpress site: you have to customize the file by
 
 ## Changelog
 
-1.0.8 - Adding fucntion to Redirect to custom url on failed login attempt  
+1.0.9 - Prevent update notification for plugin
+1.0.8 - Adding function to Redirect to custom url on failed login attempt  
 1.0.7 - Adding Block for Theme Update  
 1.0.6 - Adding get the first image in post_content  
 1.0.5 - Adding Filter the except length to 100 characters  
