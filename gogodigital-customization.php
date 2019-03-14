@@ -6,7 +6,7 @@
  * Description: Simple Customization plugin for a Wordpress site
  * Author: Gogodigital S.r.l.s.
  * Author URI: http://www.gogodigital.it
- * Version: 1.0.9
+ * Version: 1.0.10
  */
 
 /**
@@ -20,6 +20,7 @@ add_filter( 'breadcrumb_trail', '__return_false' );
 function remove_woocommerce_breadcrumbcrumbs(){
    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
+
 add_action('init','remove_woocommerce_breadcrumbcrumbs');
 
 /*
@@ -34,6 +35,7 @@ function add_js_on_custom_post_type_backend()
         wp_enqueue_script( 'script_search_key_siti', plugin_dir_url( __FILE__ ) . 'js/MYCUSTOMJS.js' );
     }
 }
+
 add_action( 'admin_enqueue_scripts', 'add_js_on_custom_post_type_backend' );
 
 /*
@@ -52,20 +54,27 @@ add_filter( 'get_the_archive_title', function ($title) {
 
 /**
  * Filter the except length to 100 characters.
+ *
+ * @param $length
+ *
+ * @return int
  */
-function wpdocs_custom_excerpt_length( $length ) {
+function wpdocs_custom_excerpt_length($length)
+{
 	if(is_home() || is_front_page()) {
 		return 25;
-	} else {
-		return 100;
 	}
+
+	return 100;
 }
+
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 /**
  * Get the first image in post_content.
  */
-function catch_that_image() {
+function catch_that_image()
+{
     global $post, $posts;
     $first_img = '';
     ob_start();
@@ -73,8 +82,9 @@ function catch_that_image() {
     $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
     $first_img = $matches [1] [0];
 
-    if(empty($first_img)){ //Defines a default image
-        $first_img = "/images/default.jpg";
+	//Defines a default image
+    if(empty($first_img)){
+        $first_img = '/images/default.jpg';
     }
 	
     return $first_img;
@@ -96,41 +106,52 @@ add_filter( 'http_request_args', function ( $response, $url ) {
 
 /**
  * Redirect to custom url on failed login attempt
+ *
+ * @param $username
  */
-function front_end_login_fail( $username ) {
+function front_end_login_fail($username)
+{
     $referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+
     // if there's a valid referrer, and it's not the default log-in screen
-    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
+    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') )
+    {
         $pos = strpos($referrer, '?login=failed');
+
         if($pos === false) {
             // add the failed
             wp_redirect( $referrer . '?login=failed' );  // let's append some     information (login=failed) to the URL for the theme to use
-        }
-        else {
+        } else {
             // already has the failed don't appened it again
             wp_redirect( $referrer );  // already appeneded redirect back
         }
+
         exit;
     }
 }
+
 add_action( 'wp_login_failed', 'front_end_login_fail' );
 
 /**
  * Prevent update notification for plugin
  * http://www.thecreativedev.com/disable-updates-for-specific-plugin-in-wordpress/
  * Place in theme functions.php or at bottom of wp-config.php
+ *
+ * @param $value
+ *
+ * @return mixed
  */
-function disable_plugin_updates( $value ) 
+function disable_plugin_updates($value)
 {
-    if ( isset($value) && is_object($value) ) {
-        if ( isset( $value->response['plugin-folder/plugin.php'] ) ) {
+    if (isset($value) && is_object($value))
+    {
+		if(isset( $value->response['plugin-folder/plugin.php'] ) )
+		{
             unset( $value->response['plugin-folder/plugin.php'] );
-       }
+		}
     }
 	
     return $value;
 }
 
 add_filter( 'site_transient_update_plugins', 'disable_plugin_updates' );
-
-?>
