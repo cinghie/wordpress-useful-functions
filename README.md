@@ -14,7 +14,8 @@ git clone https://github.com/cinghie/wordpress-gogo-customization.git gogodigita
 
 ## Changelog
 
-1.0.10 - Purge Code 
+1.0.11 - Adding Disable Yoast SEO on Custom Post Type  
+1.0.10 - Purge Code  
 1.0.9 - Prevent update notification for plugin  
 1.0.8 - Adding function to Redirect to custom url on failed login attempt  
 1.0.7 - Adding Block for Theme Update  
